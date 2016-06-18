@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class Main extends javax.swing.JFrame {
 
     public Main() {
+        Lectura();
         initComponents();
         this.setTitle("Hospital Escuela Universitario");
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -695,6 +696,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        Escritura(Arraycomplejos, Arrayparamedicos, Arrayambulancias);
         Mapa.setModal(true);
         Mapa.pack();
         Mapa.setLocationRelativeTo(this);
@@ -765,16 +767,16 @@ public class Main extends javax.swing.JFrame {
         }
         if (cont == 0) {
             if (ranking == 'A') {
-                ComplejosHospitalarios temp=new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.A);
+                ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.A);
                 Arraycomplejos.add(temp);
             } else if (ranking == 'B') {
-                ComplejosHospitalarios temp=new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.B);
+                ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.B);
                 Arraycomplejos.add(temp);
             } else if (ranking == 'C') {
-                ComplejosHospitalarios temp=new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.C);
+                ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.C);
                 Arraycomplejos.add(temp);
             } else {
-                ComplejosHospitalarios temp=new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.D);
+                ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.D);
                 Arraycomplejos.add(temp);
             }
             JOptionPane.showMessageDialog(this.Complejos, "Se ha guardado exitosamente");
@@ -847,9 +849,9 @@ public class Main extends javax.swing.JFrame {
         int edad = (int) Sp_edad.getValue();
         String id = t_id.getText();
         char ranking = (char) Cb_rankingParamedicos.getSelectedItem().toString().charAt(0);
+        String complejo = Cb_hospitales.getSelectedItem().toString();
         int cont = 0;
         int index = Cb_hospitales.getSelectedIndex();
-        String complejo = Cb_hospitales.getSelectedItem().toString();
         int limite = 0;
         int sizearray = 0;
         for (int i = 0; i < Arraycomplejos.size(); i++) {
@@ -899,9 +901,9 @@ public class Main extends javax.swing.JFrame {
             String placa = t_placa.getText();
             int ano = Integer.parseInt(t_ano.getText());
             int velocidad = Integer.parseInt(t_velocidad.getText());
+            String complejo = Cb_ambulancias.getSelectedItem().toString();
             int cont = 0;
             int index = Cb_ambulancias.getSelectedIndex();
-            String complejo = Cb_ambulancias.getSelectedItem().toString();
             for (Object ArrayAmbulancia : Arrayambulancias) {
                 if (((Ambulancia) ArrayAmbulancia).getNumeroPlaca().equals(placa)) {
                     cont++;
@@ -1030,38 +1032,38 @@ public class Main extends javax.swing.JFrame {
         String complejo = cb_reComplejos1.getSelectedItem().toString();
         String medico = cb_reParamedicos.getSelectedItem().toString();
         for (int i = 0; i < Arrayparamedicos.size(); i++) {
-            if (((Paramedicos)Arrayparamedicos.get(i)).getNombreParamedico().equals(medico)) {
-                ((Paramedicos)Arrayparamedicos.get(i)).setComplejoHospitalario(complejo);
+            if (((Paramedicos) Arrayparamedicos.get(i)).getNombreParamedico().equals(medico)) {
+                ((Paramedicos) Arrayparamedicos.get(i)).setComplejoHospitalario(complejo);
             }
         }
         for (int i = 0; i < Arraycomplejos.size(); i++) {
-            PriorityQueue<Paramedicos> temp=new PriorityQueue();
+            PriorityQueue<Paramedicos> temp = new PriorityQueue();
             for (int j = 0; j < Arrayparamedicos.size(); j++) {
-                if (((ComplejosHospitalarios)Arraycomplejos.get(i)).getNombreComlejo().equals(((Paramedicos)Arrayparamedicos.get(j)).getComplejoHospitalario())) {
-                    temp.add((Paramedicos)Arrayparamedicos.get(j));
+                if (((ComplejosHospitalarios) Arraycomplejos.get(i)).getNombreComlejo().equals(((Paramedicos) Arrayparamedicos.get(j)).getComplejoHospitalario())) {
+                    temp.add((Paramedicos) Arrayparamedicos.get(j));
                 }
             }
-            ((ComplejosHospitalarios)Arraycomplejos.get(i)).setParamedicos(temp);
+            ((ComplejosHospitalarios) Arraycomplejos.get(i)).setParamedicos(temp);
         }
-        JOptionPane.showMessageDialog(Reasignacion, "Se ha efectuado el cambio exitosamente");        
+        JOptionPane.showMessageDialog(Reasignacion, "Se ha efectuado el cambio exitosamente");
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         String complejo = cb_reComplejos2.getSelectedItem().toString();
         String placa = cb_reAmbulancias.getSelectedItem().toString();
         for (int i = 0; i < Arrayambulancias.size(); i++) {
-            if (((Ambulancia)Arrayambulancias.get(i)).getNumeroPlaca().equals(placa)) {
-                ((Ambulancia)Arrayambulancias.get(i)).setComplejoHospitalario(complejo);
+            if (((Ambulancia) Arrayambulancias.get(i)).getNumeroPlaca().equals(placa)) {
+                ((Ambulancia) Arrayambulancias.get(i)).setComplejoHospitalario(complejo);
             }
         }
         for (int i = 0; i < Arraycomplejos.size(); i++) {
-            ArrayList<Ambulancia> temp= new ArrayList();
+            ArrayList<Ambulancia> temp = new ArrayList();
             for (int j = 0; j < Arrayambulancias.size(); j++) {
-                if (((ComplejosHospitalarios)Arraycomplejos.get(i)).getNombreComlejo().equals(((Ambulancia)Arrayambulancias.get(j)).getComplejoHospitalario())) {
-                    temp.add((Ambulancia)Arrayambulancias.get(j));
+                if (((ComplejosHospitalarios) Arraycomplejos.get(i)).getNombreComlejo().equals(((Ambulancia) Arrayambulancias.get(j)).getComplejoHospitalario())) {
+                    temp.add((Ambulancia) Arrayambulancias.get(j));
                 }
             }
-            ((ComplejosHospitalarios)Arraycomplejos.get(i)).setAmbulancias(temp);
+            ((ComplejosHospitalarios) Arraycomplejos.get(i)).setAmbulancias(temp);
         }
         JOptionPane.showMessageDialog(Reasignacion, "Se ha efectuado el cambio exitosamente");
     }//GEN-LAST:event_jButton14MouseClicked
@@ -1176,8 +1178,151 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField t_velocidad;
     private javax.swing.JTable tabla_complejos;
     // End of variables declaration//GEN-END:variables
-    ArrayList Arraycomplejos = new ArrayList();
-    ArrayList Arrayparamedicos = new ArrayList();
-    ArrayList Arrayambulancias = new ArrayList();
+    static ArrayList Arraycomplejos = new ArrayList();
+    static ArrayList Arrayparamedicos = new ArrayList();
+    static ArrayList Arrayambulancias = new ArrayList();
 
+    public static void Escritura(ArrayList<ComplejosHospitalarios> hospitales, ArrayList<Paramedicos> paramedicos, ArrayList<Ambulancia> ambulancias) {
+        ExcelReadWrite readWrite = new ExcelReadWrite();
+        for (int i = 0; i < 10; i++) {
+            readWrite.writeExcel(0, i, "");
+            readWrite.writeExcel(1, i, "");
+            readWrite.writeExcel(2, i, "");
+            readWrite.writeExcel(3, i, "");
+            readWrite.writeExcel(4, i, "");
+            readWrite.writeExcel(5, i, "");
+            readWrite.writeExcel(6, i, "");
+            readWrite.writeExcel(7, i, "");
+            readWrite.writeExcel(8, i, "");
+            readWrite.writeExcel(9, i, "");
+            readWrite.writeExcel(10, i, "");
+            readWrite.writeExcel(11, i, "");
+            readWrite.writeExcel(12, i, "");
+            readWrite.writeExcel(13, i, "");
+        }
+        for (int i = 0; i < hospitales.size(); i++) {
+            readWrite.writeExcel(0, i, hospitales.get(i).getNombreComlejo());
+            readWrite.writeExcel(1, i, hospitales.get(i).getDireccion());
+            readWrite.writeExcel(2, i, Integer.toString(hospitales.get(i).getMaxParamedicos()));
+            readWrite.writeExcel(3, i, Integer.toString(hospitales.get(i).getMaxAmbulancias()));
+            readWrite.writeExcel(4, i, hospitales.get(i).getRank().toString());
+        }
+        for (int i = 0; i < paramedicos.size(); i++) {
+            readWrite.writeExcel(5, i, paramedicos.get(i).getNombreParamedico());
+            readWrite.writeExcel(6, i, Integer.toString(paramedicos.get(i).getEdad()));
+            readWrite.writeExcel(7, i, paramedicos.get(i).getID());
+            readWrite.writeExcel(8, i, paramedicos.get(i).getRank().toString());
+            readWrite.writeExcel(9, i, paramedicos.get(i).getComplejoHospitalario());
+        }
+        for (int i = 0; i < ambulancias.size(); i++) {
+            readWrite.writeExcel(10, i, ambulancias.get(i).getNumeroPlaca());
+            readWrite.writeExcel(11, i, Integer.toString(ambulancias.get(i).getYear()));
+            readWrite.writeExcel(12, i, Integer.toString(ambulancias.get(i).getVelocidad()));
+            readWrite.writeExcel(13, i, ambulancias.get(i).getComplejoHospitalario());
+        }
+        readWrite.writeExcel(0, 30, "-");
+    }
+
+    public static void Lectura() {
+        ExcelReadWrite readWrite = new ExcelReadWrite();
+        String nombre;
+        String direccion;
+        int maxparamedicos;
+        int maxambulancias;
+        char ranking;
+        for (int i = 0; readWrite.ReadExcel(0, i) != null; i++) {
+            try {
+                if (!readWrite.ReadExcel(0, i).equals("")) {
+                    nombre = readWrite.ReadExcel(0, i);
+                    direccion = readWrite.ReadExcel(1, i);
+                    maxparamedicos = Integer.parseInt(readWrite.ReadExcel(2, i));
+                    maxambulancias = Integer.parseInt(readWrite.ReadExcel(3, i));
+                    ranking = readWrite.ReadExcel(4, i).charAt(0);
+                    if (ranking == 'A') {
+                        ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.A);
+                        Arraycomplejos.add(temp);
+                    } else if (ranking == 'B') {
+                        ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.B);
+                        Arraycomplejos.add(temp);
+                    } else if (ranking == 'C') {
+                        ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.C);
+                        Arraycomplejos.add(temp);
+                    } else {
+                        ComplejosHospitalarios temp = new ComplejosHospitalarios(nombre, direccion, maxparamedicos, maxambulancias, Ranking.D);
+                        Arraycomplejos.add(temp);
+                    }
+                }
+            } catch (Exception e) {
+                break;
+            }
+        }
+        String nombre2;
+        int edad;
+        String id;
+        char ranking2;
+        String complejo;
+        for (int i = 0; readWrite.ReadExcel(0, i) != null; i++) {
+            try {
+                if (!readWrite.ReadExcel(0, i).equals("")) {
+                    nombre2 = readWrite.ReadExcel(5, i);
+                    edad = Integer.parseInt(readWrite.ReadExcel(6, i));
+                    id = readWrite.ReadExcel(7, i);
+                    ranking2 = readWrite.ReadExcel(8, i).charAt(0);
+                    complejo = readWrite.ReadExcel(9, i);
+                    if (ranking2 == 'A') {
+                        Paramedicos temp = new Paramedicos(nombre2, edad, id, Ranking.A, complejo);
+                        Arrayparamedicos.add(temp);
+                    } else if (ranking2 == 'B') {
+                        Paramedicos temp = new Paramedicos(nombre2, edad, id, Ranking.B, complejo);
+                        Arrayparamedicos.add(temp);
+                    } else if (ranking2 == 'C') {
+                        Paramedicos temp = new Paramedicos(nombre2, edad, id, Ranking.C, complejo);
+                        Arrayparamedicos.add(temp);
+                    } else {
+                        Paramedicos temp = new Paramedicos(nombre2, edad, id, Ranking.D, complejo);
+                        Arrayparamedicos.add(temp);
+                    }
+                }
+            } catch (Exception e) {
+                break;
+            }
+        }
+        String placa;
+        int ano;
+        int velocidad;
+        String complejo2;
+        for (int i = 0; readWrite.ReadExcel(0, i) != null; i++) {
+            try {
+                if (!readWrite.ReadExcel(0, i).equals("")) {
+                    placa = readWrite.ReadExcel(10, i);
+                    ano= Integer.parseInt(readWrite.ReadExcel(11, i));
+                    velocidad= Integer.parseInt(readWrite.ReadExcel(12, i));
+                    complejo2 = readWrite.ReadExcel(13, i);
+                    Ambulancia temp = new Ambulancia(placa, ano, velocidad, complejo2);
+                    Arrayambulancias.add(temp);
+                }
+            } catch (Exception e) {
+                break;
+            }
+        }
+        for (int i = 0; i < Arraycomplejos.size(); i++) {
+            PriorityQueue<Paramedicos> temp = new PriorityQueue();
+            for (int j = 0; j < Arrayparamedicos.size(); j++) {
+                if (((ComplejosHospitalarios) Arraycomplejos.get(i)).getNombreComlejo().equals(((Paramedicos) Arrayparamedicos.get(j)).getComplejoHospitalario())) {
+                    temp.add((Paramedicos) Arrayparamedicos.get(j));
+                }
+            }
+            ((ComplejosHospitalarios) Arraycomplejos.get(i)).setParamedicos(temp);
+        }
+        
+        for (int i = 0; i < Arraycomplejos.size(); i++) {
+            ArrayList<Ambulancia> temp = new ArrayList();
+            for (int j = 0; j < Arrayambulancias.size(); j++) {
+                if (((ComplejosHospitalarios) Arraycomplejos.get(i)).getNombreComlejo().equals(((Ambulancia) Arrayambulancias.get(j)).getComplejoHospitalario())) {
+                    temp.add((Ambulancia) Arrayambulancias.get(j));
+                }
+            }
+            ((ComplejosHospitalarios) Arraycomplejos.get(i)).setAmbulancias(temp);
+        }
+    }
 }
