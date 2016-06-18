@@ -1,6 +1,6 @@
 package heu;
 
-public class Paramedicos {
+public class Paramedicos implements Comparable<Paramedicos>{
     private String nombreParamedico;
     private int edad;
     private String ID;
@@ -61,6 +61,11 @@ public class Paramedicos {
     @Override
     public String toString() {
         return nombreParamedico + ", ranking=" + rank;
+    }
+
+    @Override
+    public int compareTo(Paramedicos t) {
+        return rank.compareTo(t.rank);
     }
     
     

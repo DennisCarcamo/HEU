@@ -3,7 +3,7 @@ package heu;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-public class CamplejosHospitalarios {
+public class ComplejosHospitalarios {
     private String nombreComlejo;
     private String direccion;
     private int maxParamedicos;
@@ -12,10 +12,10 @@ public class CamplejosHospitalarios {
     private PriorityQueue<Paramedicos> paramedicos=new PriorityQueue();
     private ArrayList<Ambulancia> ambulancias= new ArrayList();
 
-    public CamplejosHospitalarios() {
+    public ComplejosHospitalarios() {
     }
 
-    public CamplejosHospitalarios(String NombreComlejo, String Direccion, int MaxParamedicos, int MaxAmbulancias, Ranking Rank) {
+    public ComplejosHospitalarios(String NombreComlejo, String Direccion, int MaxParamedicos, int MaxAmbulancias, Ranking Rank) {
         this.nombreComlejo = NombreComlejo;
         this.direccion = Direccion;
         this.maxParamedicos = MaxParamedicos;
@@ -81,6 +81,6 @@ public class CamplejosHospitalarios {
 
     @Override
     public String toString() {
-        return  nombreComlejo + ", Ranking=" + rank;
+        return  nombreComlejo;
     }  
 }
