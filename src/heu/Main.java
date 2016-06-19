@@ -1,5 +1,10 @@
 package heu;
 
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import javax.swing.DefaultComboBoxModel;
@@ -9,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class Main extends javax.swing.JFrame {
 
     public Main() {
-        Lectura();
+        //Lectura();
         initComponents();
         this.setTitle("Hospital Escuela Universitario");
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -30,7 +35,24 @@ public class Main extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         Mapa = new javax.swing.JDialog();
+        jLabel24 = new javax.swing.JLabel();
+        cb_hospitales = new javax.swing.JComboBox();
+        jButton15 = new javax.swing.JButton();
+        t_nodoNuevo = new javax.swing.JTextField();
+        jButton16 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        cb_grafo1 = new javax.swing.JComboBox();
+        cb_grafo2 = new javax.swing.JComboBox();
+        jButton17 = new javax.swing.JButton();
         Emergencias = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        jButton18 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        cb_ubicacion = new javax.swing.JComboBox();
+        cb_grado = new javax.swing.JComboBox();
         Complejos = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -97,6 +119,7 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
 
         jButton4.setText("Complejos Hospitalarios");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,26 +178,171 @@ public class Main extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel24.setText("Mapa");
+
+        jButton15.setText("Agregar");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+
+        jButton16.setText("Agregar");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel25.setText("Nodos");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel26.setText("Aristas");
+
+        jButton17.setText("Agregar");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MapaLayout = new javax.swing.GroupLayout(Mapa.getContentPane());
         Mapa.getContentPane().setLayout(MapaLayout);
         MapaLayout.setHorizontalGroup(
             MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(MapaLayout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(jLabel24)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(MapaLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MapaLayout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MapaLayout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MapaLayout.createSequentialGroup()
+                        .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(MapaLayout.createSequentialGroup()
+                                .addComponent(cb_grafo1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_grafo2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addComponent(jButton17))
+                            .addGroup(MapaLayout.createSequentialGroup()
+                                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(t_nodoNuevo)
+                                    .addComponent(cb_hospitales, 0, 210, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton16, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(92, 92, 92))))
         );
         MapaLayout.setVerticalGroup(
             MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MapaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel24)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_hospitales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton15))
+                .addGap(43, 43, 43)
+                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(t_nodoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton16))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel26)
+                .addGap(54, 54, 54)
+                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_grafo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_grafo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton17))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jButton18.setText("Emergencia");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel28.setText("Emergencias");
+
+        jLabel29.setText("Ubicacion");
+
+        jLabel30.setText("Grado de emergencia");
+
+        cb_grado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D" }));
 
         javax.swing.GroupLayout EmergenciasLayout = new javax.swing.GroupLayout(Emergencias.getContentPane());
         Emergencias.getContentPane().setLayout(EmergenciasLayout);
         EmergenciasLayout.setHorizontalGroup(
             EmergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(EmergenciasLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(EmergenciasLayout.createSequentialGroup()
+                .addGroup(EmergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EmergenciasLayout.createSequentialGroup()
+                        .addGap(406, 406, 406)
+                        .addComponent(jLabel28))
+                    .addGroup(EmergenciasLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(EmergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(EmergenciasLayout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_grado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(EmergenciasLayout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(EmergenciasLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jButton18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EmergenciasLayout.setVerticalGroup(
             EmergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(EmergenciasLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel28)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(EmergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(cb_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(EmergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(cb_grado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(jButton18)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -337,12 +505,11 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(t_nombreParamedico, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(t_id, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cb_hospitales, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 60, Short.MAX_VALUE))
+                            .addComponent(Sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(ParamedicosLayout.createSequentialGroup()
                         .addGap(196, 196, 196)
                         .addComponent(jButton9)))
-                .addGap(57, 57, 57))
+                .addGap(57, 117, Short.MAX_VALUE))
         );
         ParamedicosLayout.setVerticalGroup(
             ParamedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -685,6 +852,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(600, 400, 180, 100);
 
+        jLabel27.setFont(new java.awt.Font("Trebuchet MS", 0, 100)); // NOI18N
+        jLabel27.setText("eHospital");
+        getContentPane().add(jLabel27);
+        jLabel27.setBounds(200, 90, 480, 150);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -696,7 +868,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Escritura(Arraycomplejos, Arrayparamedicos, Arrayambulancias);
+        //Escritura(Arraycomplejos, Arrayparamedicos, Arrayambulancias);
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < Arraycomplejos.size(); i++) {
+            modelo.addElement(((ComplejosHospitalarios) Arraycomplejos.get(i)).getNombreComlejo());
+        }
+        cb_hospitales.setModel(modelo);
         Mapa.setModal(true);
         Mapa.pack();
         Mapa.setLocationRelativeTo(this);
@@ -704,6 +881,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        dibujarGrafo(Arrayhospitales);
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < Arrayhospitales.size(); i++) {
+            modelo.addElement(Arrayhospitales.get(i).toString());
+        }
+        cb_ubicacion.setModel(modelo);
         Emergencias.setModal(true);
         Emergencias.pack();
         Emergencias.setLocationRelativeTo(this);
@@ -1068,6 +1251,130 @@ public class Main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(Reasignacion, "Se ha efectuado el cambio exitosamente");
     }//GEN-LAST:event_jButton14MouseClicked
 
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        int id = Arrayhospitales.size();
+        int aux = cb_hospitales.getSelectedIndex();
+        ComplejosHospitalarios temp = (ComplejosHospitalarios) Arraycomplejos.get(aux);
+        int cont = 0;
+        for (int i = 0; i < Arrayhospitales.size(); i++) {
+            if (Arrayhospitales.get(i).toString().equals(temp.toString())) {
+                cont++;
+            }
+        }
+        if (cont == 0) {
+            Node nodo = new Node(temp, id);
+            Arrayhospitales.add(nodo);
+            JOptionPane.showMessageDialog(Mapa, "Se ha agregado exitosamente");
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
+            for (int i = 0; i < Arrayhospitales.size(); i++) {
+                modelo.addElement(Arrayhospitales.get(i).toString());
+                modelo2.addElement(Arrayhospitales.get(i).toString());
+            }
+            cb_grafo1.setModel(modelo);
+            cb_grafo2.setModel(modelo2);
+        } else {
+            JOptionPane.showMessageDialog(Mapa, "Ya existe este nodo");
+        }
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        int id = Arrayhospitales.size();
+        String temp = t_nodoNuevo.getText();
+        int cont = 0;
+        for (int i = 0; i < Arrayhospitales.size(); i++) {
+            if (Arrayhospitales.get(i).toString().equals(temp)) {
+                cont++;
+            }
+        }
+        if (cont == 0) {
+            Node nodo = new Node(temp, id);
+            Arrayhospitales.add(nodo);
+            JOptionPane.showMessageDialog(Mapa, "Se ha agregado exitosamente");
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
+            for (int i = 0; i < Arrayhospitales.size(); i++) {
+                modelo.addElement(Arrayhospitales.get(i).toString());
+                modelo2.addElement(Arrayhospitales.get(i).toString());
+            }
+            cb_grafo1.setModel(modelo);
+            cb_grafo2.setModel(modelo2);
+        } else {
+            JOptionPane.showMessageDialog(Mapa, "Ya existe este nodo");
+        }
+        t_nodoNuevo.setText("");
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        int ori = cb_grafo1.getSelectedIndex();
+        int dest = cb_grafo2.getSelectedIndex();
+        if (ori != dest) {
+            double longitud = 0;
+            try {
+                String longi = JOptionPane.showInputDialog(Mapa, "Ingrese la longitud: ");
+                longitud = Double.parseDouble(longi);
+                Node or = (Node) Arrayhospitales.get(ori);
+                Node des = (Node) Arrayhospitales.get(dest);
+                int cont = 0;
+                int existe = 0;
+                for (int i = 0; i < or.getAristas().size(); i++) {
+                    int ID = ((Arista) or.getAristas().get(i)).getNodoFinal().getID();
+                    if (ID == des.getID()) {
+                        cont++;
+                    }
+                }
+                if (cont == 0) {
+                    Arista aristaA1 = new Arista(longitud, (Node) Arrayhospitales.get(ori), (Node) Arrayhospitales.get(dest));
+                    Arista aristaA2 = new Arista(longitud, (Node) Arrayhospitales.get(dest), (Node) Arrayhospitales.get(ori));
+                    ((Node) Arrayhospitales.get(ori)).getAristas().add(aristaA1);
+                    ((Node) Arrayhospitales.get(dest)).getAristas().add(aristaA2);
+                    JOptionPane.showMessageDialog(Mapa, "Se a creado la arista Exitosamente");
+                } else {
+                    JOptionPane.showMessageDialog(Mapa, "Ya existe esta arista");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(Mapa, "Ingresó los datos erróneos");
+            }
+        } else {
+            JOptionPane.showMessageDialog(Mapa, "Escoja un nodo difetente");
+        }
+    }//GEN-LAST:event_jButton17MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        double[][] matriz = Floyd();
+        ArrayList temp = new ArrayList();
+        int ubicacion = cb_ubicacion.getSelectedIndex();
+        String ranking = cb_grado.getSelectedItem().toString();
+        if (((Node) Arrayhospitales.get(ubicacion)).getValue() instanceof ComplejosHospitalarios) {
+            JOptionPane.showMessageDialog(Mapa, "Esta ubicacion no se puede escoger");
+        } else {
+            for (int i = 0; i < Arrayhospitales.size(); i++) {
+                if (((Node) Arrayhospitales.get(i)).getValue() instanceof ComplejosHospitalarios) {
+                    ComplejosHospitalarios complejo = (ComplejosHospitalarios) ((Node) Arrayhospitales.get(i)).getValue();
+                    if (complejo.getAmbulancias().size() >= 1 && complejo.getParamedicos().size() >= 3 && complejo.getRank().toString().equals(ranking)) {
+                        temp.add(((Node) Arrayhospitales.get(i)));
+                    }
+                }
+            }
+            double distancia = 999;
+            int posicionfinal = 0;
+            for (int i = 0; i < temp.size(); i++) {
+                int posicion = ((Node) temp.get(i)).getID();
+                if (matriz[ubicacion][posicion] < distancia) {
+                    distancia = matriz[ubicacion][posicion];
+                    posicionfinal = posicion;
+                }
+            }
+            if (distancia == 999) {
+                JOptionPane.showMessageDialog(Emergencias,"No hay forma de llegar");
+            } else {
+                ComplejosHospitalarios complejoLlegada = (ComplejosHospitalarios) ((Node) Arrayhospitales.get(posicionfinal)).getValue();
+                double velocidad = complejoLlegada.getAmbulancias().get(0).getVelocidad();
+                JOptionPane.showMessageDialog(Emergencias, "Emergencia de: " + complejoLlegada.getNombreComlejo() + " timpo total de: " + (distancia / velocidad)*2 + "horas , hacia: " + Arrayhospitales.get(ubicacion).toString());
+            }
+        }
+    }//GEN-LAST:event_jButton18MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1124,16 +1431,25 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner Sp_paramedicos;
     private javax.swing.JTable Tabla_ambulancias;
     private javax.swing.JTextArea a_Direccion;
+    private javax.swing.JComboBox cb_grado;
+    private javax.swing.JComboBox cb_grafo1;
+    private javax.swing.JComboBox cb_grafo2;
+    private javax.swing.JComboBox cb_hospitales;
     private javax.swing.JComboBox cb_reAmbulancias;
     private javax.swing.JComboBox cb_reComplejos1;
     private javax.swing.JComboBox cb_reComplejos2;
     private javax.swing.JComboBox cb_reParamedicos;
+    private javax.swing.JComboBox cb_ubicacion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1158,13 +1474,21 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1172,6 +1496,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField t_ano;
     private javax.swing.JTextField t_id;
+    private javax.swing.JTextField t_nodoNuevo;
     private javax.swing.JTextField t_nombreParamedico;
     private javax.swing.JTextField t_nombrehospitales;
     private javax.swing.JTextField t_placa;
@@ -1181,24 +1506,17 @@ public class Main extends javax.swing.JFrame {
     static ArrayList Arraycomplejos = new ArrayList();
     static ArrayList Arrayparamedicos = new ArrayList();
     static ArrayList Arrayambulancias = new ArrayList();
+    static ArrayList Arrayhospitales = new ArrayList();
+    mxGraph Graph = new mxGraph();
+    mxGraphComponent GC = new mxGraphComponent(Graph);
 
     public static void Escritura(ArrayList<ComplejosHospitalarios> hospitales, ArrayList<Paramedicos> paramedicos, ArrayList<Ambulancia> ambulancias) {
         ExcelReadWrite readWrite = new ExcelReadWrite();
         for (int i = 0; i < 10; i++) {
-            readWrite.writeExcel(0, i, "");
-            readWrite.writeExcel(1, i, "");
-            readWrite.writeExcel(2, i, "");
-            readWrite.writeExcel(3, i, "");
-            readWrite.writeExcel(4, i, "");
-            readWrite.writeExcel(5, i, "");
-            readWrite.writeExcel(6, i, "");
-            readWrite.writeExcel(7, i, "");
-            readWrite.writeExcel(8, i, "");
-            readWrite.writeExcel(9, i, "");
-            readWrite.writeExcel(10, i, "");
-            readWrite.writeExcel(11, i, "");
-            readWrite.writeExcel(12, i, "");
-            readWrite.writeExcel(13, i, "");
+            for (int j = 0; j < 20; j++) {
+                readWrite.writeExcel(j, i, "");
+            }
+
         }
         for (int i = 0; i < hospitales.size(); i++) {
             readWrite.writeExcel(0, i, hospitales.get(i).getNombreComlejo());
@@ -1295,8 +1613,8 @@ public class Main extends javax.swing.JFrame {
             try {
                 if (!readWrite.ReadExcel(0, i).equals("")) {
                     placa = readWrite.ReadExcel(10, i);
-                    ano= Integer.parseInt(readWrite.ReadExcel(11, i));
-                    velocidad= Integer.parseInt(readWrite.ReadExcel(12, i));
+                    ano = Integer.parseInt(readWrite.ReadExcel(11, i));
+                    velocidad = Integer.parseInt(readWrite.ReadExcel(12, i));
                     complejo2 = readWrite.ReadExcel(13, i);
                     Ambulancia temp = new Ambulancia(placa, ano, velocidad, complejo2);
                     Arrayambulancias.add(temp);
@@ -1314,7 +1632,7 @@ public class Main extends javax.swing.JFrame {
             }
             ((ComplejosHospitalarios) Arraycomplejos.get(i)).setParamedicos(temp);
         }
-        
+
         for (int i = 0; i < Arraycomplejos.size(); i++) {
             ArrayList<Ambulancia> temp = new ArrayList();
             for (int j = 0; j < Arrayambulancias.size(); j++) {
@@ -1324,5 +1642,104 @@ public class Main extends javax.swing.JFrame {
             }
             ((ComplejosHospitalarios) Arraycomplejos.get(i)).setAmbulancias(temp);
         }
+    }
+
+    public void dibujarGrafo(ArrayList grafo) {
+        Object Parent = Graph.getDefaultParent();
+        GC.setPreferredSize(new Dimension(900, 300));
+        Graph.getModel().beginUpdate();
+        ArrayList temp = new ArrayList();
+        int y = 0;
+        for (int i = 0; i < grafo.size(); i++) {
+            if (i % 3 == 0) {
+                y = 100;
+            } else {
+                if (i % 3 == 1) {
+                    y = 200;
+                }
+                if (i % 3 == 2) {
+                    y = 0;
+                }
+            }
+            temp.add(Graph.insertVertex(Parent, null, grafo.get(i), 70 * i, y, 50, 50));
+        }
+        Object Origen = null, Destino = null;
+        for (int i = 0; i < grafo.size(); i++) {
+            try {
+                for (int j = 0; j < ((Node) grafo.get(i)).getAristas().size(); j++) {
+                    double peso = ((Arista) ((Node) grafo.get(i)).getAristas().get(j)).getLongitud();
+                    int ID1 = ((Arista) ((Node) grafo.get(i)).getAristas().get(j)).getNodoInicial().getID();
+                    int ID2 = ((Arista) ((Node) grafo.get(i)).getAristas().get(j)).getNodoFinal().getID();
+                    if (temp.get(ID2) != null || temp.get(ID1) != null) {
+                        Origen = (Object) temp.get(ID1);
+                        Destino = (Object) temp.get(ID2);
+                        Graph.insertEdge(Parent, null, peso, Origen, Destino);
+
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+        Graph.getModel().endUpdate();
+        jPanel1.add(GC);
+        jPanel1.setLayout(new FlowLayout());
+    }
+
+    public double[][] Floyd() {
+        final int infinito = 999;
+        double[][] matrizA;
+        double[][] matrizC = new double[Arrayhospitales.size()][Arrayhospitales.size()];
+        for (int i = 0; i < matrizC.length; i++) {
+            for (int j = 0; j < matrizC.length; j++) {
+                if (i == j) {
+                    matrizC[i][j] = infinito;
+                } else {
+                    matrizC[i][j] = ((Node) Arrayhospitales.get(j)).getID();
+                }
+            }
+        }
+        matrizA = generarAdyacencia();
+        matrizC = caminos(matrizA, matrizC);
+        return matrizC;
+    }
+
+    public double[][] generarAdyacencia() {
+        final int infinito = 999;
+        double[][] matriz = new double[Arrayhospitales.size()][Arrayhospitales.size()];
+        for (int i = 0; i < Arrayhospitales.size(); i++) {
+            for (int j = 0; j < ((Node) Arrayhospitales.get(i)).getAristas().size(); j++) {
+                if (((Node) Arrayhospitales.get(i)).getAristas().get(j) != null) {
+                    matriz[((Node) Arrayhospitales.get(i)).getID()][((Arista) ((Node) Arrayhospitales.get(i)).getAristas().get(j)).getNodoFinal().getID()] = ((Arista) ((Node) Arrayhospitales.get(i)).getAristas().get(j)).getLongitud();
+                }
+            }
+        }
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if (matriz[i][j] == 0) {
+                    if (i == j) {
+                        matriz[i][j] = 0;
+                    } else {
+                        matriz[i][j] = infinito;
+                    }
+                }
+            }
+        }
+        return matriz;
+    }
+
+    public double[][] caminos(double[][] matrizA, double[][] matrizC) {
+        for (int i = 0; i < Arrayhospitales.size(); i++) {
+            for (int j = 0; j < Arrayhospitales.size(); j++) {
+                for (int k = 0; k < Arrayhospitales.size(); k++) {
+                    if (matrizA[i][k] + matrizA[k][j] < matrizA[i][j]) {
+                        matrizA[i][j] = matrizA[i][k] + matrizA[k][j];
+                        matrizC[i][j] = k;
+                    }
+                }
+            }
+        }
+        return matrizA;//retorno adayacencia
     }
 }
