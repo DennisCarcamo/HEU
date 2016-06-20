@@ -1366,11 +1366,20 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             if (distancia == 999) {
-                JOptionPane.showMessageDialog(Emergencias,"No hay forma de llegar");
+                JOptionPane.showMessageDialog(Emergencias, "No hay forma de llegar");
             } else {
                 ComplejosHospitalarios complejoLlegada = (ComplejosHospitalarios) ((Node) Arrayhospitales.get(posicionfinal)).getValue();
                 double velocidad = complejoLlegada.getAmbulancias().get(0).getVelocidad();
-                JOptionPane.showMessageDialog(Emergencias, "Emergencia de: " + complejoLlegada.getNombreComlejo() + " timpo total de: " + (distancia / velocidad)*2 + "horas , hacia: " + Arrayhospitales.get(ubicacion).toString());
+                double tiempo=distancia/velocidad;
+                Ambulancia ambulancia = complejoLlegada.getAmbulancias().get(0);
+                complejoLlegada.getAmbulancias().remove(0);
+                Paramedicos paramedico1 = complejoLlegada.getParamedicos().poll();
+                Paramedicos paramedico2 = complejoLlegada.getParamedicos().poll();
+                Paramedicos paramedico3 = complejoLlegada.getParamedicos().poll();
+                hilo Hilo = new hilo(tiempo,paramedico1,paramedico2,paramedico3,ambulancia,complejoLlegada);
+                Thread proceso= new Thread(Hilo);
+                proceso.start();
+                //JOptionPane.showMessageDialog(Emergencias, "Emergencia de: " + complejoLlegada.getNombreComlejo() + " timpo total de: " + (distancia / velocidad)*2 + "horas , hacia: " + Arrayhospitales.get(ubicacion).toString());
             }
         }
     }//GEN-LAST:event_jButton18MouseClicked
